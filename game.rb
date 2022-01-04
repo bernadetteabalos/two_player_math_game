@@ -21,7 +21,6 @@ class Game
   end 
 
   def play 
-
     @turn = @player_one 
     until game_end?
       evaluate = new_round
@@ -54,5 +53,18 @@ class Game
     puts "#{@player_one.name}: #{@player_one.lives}/3 vs #{@player_two.name}: #{@player_two.lives}/3"
   end 
 
+  def game_over
+    score_tally
+    winner = nil
+    if @player_one.lives > 0
+      winner = @player_one
+    else
+      winner = @player_two
+    end
+
+    puts "#{winner.name} wins with a score of #{winner.lives}"
+    puts "----- GAME OVER -----"
+    puts "Good bye!"
+  end
 
 end 
